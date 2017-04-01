@@ -34,8 +34,7 @@ describe('studentScore', function () {
         let cl = new Class(320, 320, 1).addStuScore(stu);
         let allcls = [cl];
 
-        let findcl = allcls.find(cl => cl.findClass(stu));
-
+        let findcl = allcls.find(cl => cl.classId === stu.student.classno);
         expect(findcl).toEqual(cl);
     })
 
@@ -45,7 +44,7 @@ describe('studentScore', function () {
         let allcls = [cl];
 
         let stu1 = new StuScore(new Student({name: 'Jerry', stuno:2, nation: 'han', classno: 2, math: 85, chinese: 85, english: 85, program: 85}), 85, 340);
-        let findcl = allcls.find(cl => cl.findClass(stu1));
+        let findcl = allcls.find(cl => cl.classId === stu1.student.classno);
         expect(findcl).toEqual(undefined);
     })
 
@@ -53,7 +52,7 @@ describe('studentScore', function () {
         let stu = new StuScore(new Student({name: 'Tom', stuno:1, nation:'han', classno: 1, math: 80, chinese: 80, english: 80, program: 80}), 80, 320);
         let cl = new Class(320, 320, 1).addStuScore(stu);
         let allcls = [cl];
-        let findcl = allcls.find(cl => cl.findClass(stu));
+        let findcl = allcls.find(cl => cl.classId === stu.student.classno);
 
         let stu1 = new StuScore(new Student({name: 'Tom', stuno:1, nation:'han', classno: 1, math: 90, chinese: 90, english: 90, program: 90}), 90, 360);
         findcl = stu1.resetStuScore(findcl);
@@ -72,7 +71,7 @@ describe('studentScore', function () {
         let cl = new Class(320, 320, 1).addStuScore(stu);
         let allcls = [cl];
 
-        let findcl = allcls.find(cl => cl.findClass(stu));
+        let findcl = allcls.find(cl => cl.classId === stu.student.classno);
         findcl.addStuScore();
         expect(findcl).toEqual(cl);
     })
@@ -83,7 +82,7 @@ describe('studentScore', function () {
         let allcls = [cl];
 
         let stu1 = new StuScore(new Student({name: 'Jerry', stuno:2, nation: 'han', classno: 1, math: 85, chinese: 85, english: 85, program: 85}), 85, 340);
-        let findcl = allcls.find(cl => cl.findClass(stu1));
+        let findcl = allcls.find(cl => cl.classId === stu1.student.classno);
 
         let avarage = findcl.calAverage(stu1);
         expect(avarage).toEqual(330);
@@ -95,7 +94,7 @@ describe('studentScore', function () {
         let allcls = [cl];
 
         let stu1 = new StuScore(new Student({name: 'Jerry', stuno:2, nation: 'han', classno: 1, math: 85, chinese: 85, english: 85, program: 85}), 85, 340);
-        let findcl = allcls.find(cl => cl.findClass(stu1));
+        let findcl = allcls.find(cl => cl.classId === stu1.student.classno);
 
         let avarage = findcl.calMiddle(stu1);
         expect(avarage).toEqual(330);
@@ -111,7 +110,7 @@ describe('studentScore', function () {
         let allcls = [cl];
 
         let stu1 = new StuScore(new Student({name: 'Jerry', stuno:2, nation: 'han', classno: 1, math: 85, chinese: 85, english: 85, program: 85}), 85, 340);
-        let findcl = allcls.find(cl => cl.findClass(stu1));
+        let findcl = allcls.find(cl => cl.classId === stu1.student.classno);
         let middle = findcl.calMiddle(stu1);
         expect(middle).toEqual(324);
     })
@@ -122,7 +121,7 @@ describe('studentScore', function () {
         let allcls = [cl];
 
         let stu1 = new StuScore(new Student({name: 'Jerry', stuno:2, nation: 'han', classno: 1, math: 85, chinese: 85, english: 85, program: 85}), 85, 340);
-        let findcl = allcls.find(cl => cl.findClass(stu1));
+        let findcl = allcls.find(cl => cl.classId === stu1.student.classno);
 
         let avarage = findcl.calMiddle(stu1);
         let middle = findcl.calMiddle(stu1);
