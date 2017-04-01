@@ -48,17 +48,6 @@ describe('studentScore', function () {
         expect(findcl).toEqual(undefined);
     })
 
-    it('should reset stuScore info in class', function () {
-        let stu = new StuScore(new Student({name: 'Tom', stuNo:1, nation:'han', classNo: 1, math: 80, chinese: 80, english: 80, program: 80}), 80, 320);
-        let cl = new Class(320, 320, 1).addStuScore(stu);
-        let allcls = [cl];
-        let findcl = allcls.find(cl => cl.classId === stu.student.classNo);
-
-        let stu1 = new StuScore(new Student({name: 'Tom', stuNo:1, nation:'han', classNo: 1, math: 90, chinese: 90, english: 90, program: 90}), 90, 360);
-        findcl = stu1.resetStuScore(findcl);
-        expect(findcl.stuScore[0]).toEqual(stu1);
-    })
-
     it('should add Class when student has new classId', function () {
         let stu = new StuScore(new Student({name: 'Tom', stuNo:1, nation:'han', classNo: 1, math: 80, chinese: 80, english: 80, program: 80}), 80, 320);
         let allcls = [];
