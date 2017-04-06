@@ -1,15 +1,22 @@
 let express = require('express');
 let app = express();
-let path = require('path');
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, './index.html'));
+//let path = require('path');
+// app.get('/', function(req, res) {
+//
+//     res.sendFile(path.join(__dirname, './index.html'));
+// })
+app.set("view engine", 'ejs');
+
+app.set('views', __dirname + '/lib/student_score/view');
+
+app.get("/", function(req, res) {
+    res.render('index.ejs', {});
+});
+
+app.get('/addStudent', function (req, res) {
+    res.render('addStudetn.ejs', {});
 })
-
-app.use('/addStudent', function (req, res) {
-    res.sendFile(path.join(__dirname, './addStudent.html'))
-})
-
 app.listen(3000, function () {
     console.log('listen...');
 
