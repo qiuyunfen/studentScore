@@ -27,13 +27,13 @@ app.post('/addStudentPage', function (req, res) {
     let {name, stuNo, nation, classNo, math, chinese, english, program} = req.body;
     let stuInfo = new Student({
         name,
-        stuNo,
+        stuNo: parseInt(stuNo),
         nation,
-        classNo,
-        math,
-        chinese,
-        english,
-        program
+        classNo: parseInt(classNo),
+        math: parseInt(math),
+        chinese: parseInt(chinese),
+        english: parseInt(english),
+        program: parseInt(program)
     })
     let msg = system.handAddStudentInfo(stuInfo);
     res.render('addStudentPage.ejs', {msg: msg.substring(0, 7)});
