@@ -15,7 +15,11 @@ app.get("/", function(req, res) {
 });
 
 app.get('/addStudent', function (req, res) {
-    res.render('addStudetn.ejs', {});
+    res.render('addStudent.ejs', {});
+})
+
+app.get('/printScore', function (req, res) {
+    res.render('printScore.ejs', {});
 })
 app.listen(3000, function () {
     console.log('listen...');
