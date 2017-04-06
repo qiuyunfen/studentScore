@@ -49,6 +49,10 @@ app.get('/printScorePage', function (req, res) {
     res.render('printScorePage.ejs', {stuStr: str});
 })
 
+app.get('/exit', function (req, res) {
+    res.render('exit.ejs');
+})
+
 app.listen(3000, function () {
     console.log('listen...');
 
