@@ -28,9 +28,9 @@
     var submitButton = document.getElementById('submit');
     submitButton.onclick = function () {
         var ajax = new XMLHttpRequest();
-        ajax.open('post', 'service.js');
+        ajax.open('post', '');
         ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-        ajax.send('input='+input);
+        ajax.send('input=' + input);
         ajax.onreadystatechange = function(){
             if (ajax.readyState == 4 && ajax.status == 200) {
                 window.location = 'index.html';
