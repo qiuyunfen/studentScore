@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addStudent</title>
+</head>
+<body>
+    <span>姓名:</span><input type="text" id="name"/><br>
+    <span>学号:</span><input type="text" id="stuNo"/><br>
+    <span>民族:</span><input type="text" id="nation"/><br>
+    <span>班级:</span><select id="classNo"><option value="1">1</option><option value="2">2</option></select><br>
+    <span>数学:</span><input type="text" id="math"/><br>
+    <span>语文:</span><input type="text" id="chinese"/><br>
+    <span>英语:</span><input type="text" id="english"/><br>
+    <span>编程:</span><input type="text" id="program"/><br>
+    <input type="submit" value="提交" id="submit">
+</body>
+<script type="text/javascript">
+    var name = document.getElementById('name').value;
+    var stuNo = document.getElementById('stuNo').value;
+    var nation = document.getElementById('nation').value;
+    var classNo = document.getElementById('classNo').value;
+    var math = document.getElementById('math').value;
+    var chinese = document.getElementById('chinese').value;
+    var english = document.getElementById('english').value;
+    var program = document.getElementById('program').value;
+    var input = name+','+stuNo+','+nation+','+classNo+',math:'+math+',chinese:'+chinese+',english:'+english+',program'+program;
+    var submitButton = document.getElementById('submit');
+    submitButton.onclick = function () {
+        var ajax = new XMLHttpRequest();
+        ajax.open('post', 'service.js');
+        ajax.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        ajax.send('input='+input);
+        ajax.onreadystatechange = function(){
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                window.location = 'index.html';
+            };
+        }
+    }
+</script>
+</html>
