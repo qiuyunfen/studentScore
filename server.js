@@ -1,4 +1,6 @@
 let express = require('express');
+let System = require('./lib/student_score/System');
+
 let app = express();
 
 //let path = require('path');
@@ -21,6 +23,13 @@ app.get('/addStudent', function (req, res) {
 app.get('/printScore', function (req, res) {
     res.render('printScore.ejs', {});
 })
+
+app.get('/printScorePage', function (req, res) {
+    let stuNos = req.query.stuNos;
+    let str = new System().printStudentInfo(stuNos);
+    res.render('printScorePage.ejs', {stuStr: str});
+})
+
 app.listen(3000, function () {
     console.log('listen...');
 
