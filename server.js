@@ -1,8 +1,11 @@
 let express = require('express');
+var bodyParser = require('body-parser');
 let System = require('./lib/student_score/System');
+let Student = require('./lib/student_score/Student');
 
 let app = express();
-
+let system = new System();
+app.use(bodyParser.urlencoded({ extended: false }));
 //let path = require('path');
 // app.get('/', function(req, res) {
 //
@@ -20,13 +23,29 @@ app.get('/addStudent', function (req, res) {
     res.render('addStudent.ejs', {});
 })
 
+app.post('/addStudentPage', function (req, res) {
+    let {name, stuNo, nation, classNo, math, chinese, english, program} = req.body;
+    let stuInfo = new Student({
+        name,
+        stuNo,
+        nation,
+        classNo,
+        math,
+        chinese,
+        english,
+        program
+    })
+    let msg = system.handAddStudentInfo(stuInfo);
+    res.render('addStudentPage.ejs', {msg: msg.substring(0, 7)});
+});
+
 app.get('/printScore', function (req, res) {
     res.render('printScore.ejs', {});
 })
 
 app.get('/printScorePage', function (req, res) {
     let stuNos = req.query.stuNos;
-    let str = new System().printStudentInfo(stuNos);
+    let str = system.printStudentInfo(stuNos);
     res.render('printScorePage.ejs', {stuStr: str});
 })
 
