@@ -1,13 +1,9 @@
-/**
- * Created by qiuyf on 17-4-7.
- */
 let express = require('express');
 var bodyParser = require('body-parser');
-let System = require('./lib/student_score/System');
-let Student = require('./lib/student_score/Student');
+let StudentService = require('./lib/student_score/StudentService');
 
 let app = express();
-let system = new System();
+let system = new StudentService();
 app.use(bodyParser.urlencoded({ extended: true }));
 let path = require('path');
 // app.get('/', function(req, res) {
