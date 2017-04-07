@@ -37,6 +37,7 @@ app.post('/addStudentPage', function (req, res) {
     })
     let msg = system.handAddStudentInfo(stuInfo);
     res.render('addStudentPage.ejs', {msg: msg.substring(0, 7)});
+
 });
 
 app.get('/printScore', function (req, res) {
@@ -46,7 +47,7 @@ app.get('/printScore', function (req, res) {
 app.get('/printScorePage', function (req, res) {
     let stuNos = req.query.stuNos;
     let str = system.printStudentInfo(stuNos);
-    res.render('printScorePage.ejs', {stuStr: str});
+    res.render('printScorePage.ejs', {stuStr: str.split('\n').join('<br>')});
 })
 
 app.get('/exit', function (req, res) {
