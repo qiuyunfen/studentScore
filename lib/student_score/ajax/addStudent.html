@@ -16,6 +16,7 @@
         <span>编程:</span><input type="text" id="program"/><br>
         <input type="button" value="提交" id="submitButton">
     </div>
+    <a href="/">come back to main Page</a>
 </body>
 <script src="./jquery/dist/jquery.js"></script>
 <script type="text/javascript">
@@ -46,5 +47,37 @@
             }
         });
     });
+
+//    let submitButton = document.getElementById('submitButton');
+//    submitButton.onclick = function () {
+//        let name = document.getElementById('name').value;
+//        let stuNo = document.getElementById('stuNo').value;
+//        let nation = document.getElementById('nation').value;
+//        let classNo = document.getElementById('classNo').value;
+//        let math = document.getElementById('math').value;
+//        let chinese = document.getElementById('chinese').value;
+//        let english = document.getElementById('english').value;
+//        let program = document.getElementById('program').value;
+//        var inputStr = name+','+stuNo+','+nation+','+classNo+',math:'+math+',chinese:'+chinese+',english:'+english+',program:'+program;
+//        var xhr = new XMLHttpRequest();
+//        xhr.open("POST", '/addStudent');
+//        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//        xhr.send(inputStr);
+//        xhr.onreadystatechange = function () {
+//            if (xhr.readyState == 4) {
+//                var status = xhr.status;
+//                if (status == 200) {
+//                    document.getElementById('name').value = '';
+//                    document.getElementById('stuNo').value = '';
+//                    document.getElementById('nation').value = '';
+//                    document.getElementById('classNo').value = '1';
+//                    document.getElementById('math').value = '';
+//                    document.getElementById('chinese').value = '';
+//                    document.getElementById('english').value = '';
+//                    document.getElementById('program').value = '';
+//                }
+//            }
+//        }
+//    }
 </script>
 </html>
