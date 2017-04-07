@@ -36,7 +36,7 @@ app.post('/addStudentPage', function (req, res) {
         program: parseInt(program)
     })
     let msg = system.handAddStudentInfo(stuInfo);
-    res.render('addStudentPage.ejs', {msg: msg.substring(0, 7)});
+    res.render('addStudentPage.ejs', {msg});
 
 });
 
