@@ -28,4 +28,28 @@ describe('studentScore system', function() {
             });
     });
 
+    it('should return add success msg', function(done) {
+        var body = {
+            name: 'tom',
+            stuNo: '7',
+            nation: 'han',
+            classNo: '1',
+            math: '98',
+            chinese: '100',
+            english: '97',
+            program: ''
+        };
+        request(app)
+            .post('/addStudent')
+            .send(body)
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end(function(err, res) {
+                if (err) return done(err);
+                expect(res.body.status).toEqual('0');
+                expect(res.body.msg).toEqual('请按正确的格式输入（格式：学号，学号，...）');
+                done();
+            });
+    });
+
 })
