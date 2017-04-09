@@ -57,12 +57,24 @@ describe('studentScore system', function() {
             .post('/printScore')
             .send({stuNos: '7'})
             .expect('Content-Type', /json/)
-            .expect(200)
             .expect(function(res) {
                 res.body[0].stuScore.student.name = 'tom';
             })
             .expect(200, {
                 name: 'tom',
             }, done);
+    });
+
+    it('should return student 8 of class score when student is not exit', function(done) {
+        request(app)
+            .post('/printScore')
+            .send({stuNos: '8'})
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end(function(err, res) {
+                if (err) return done(err);
+                expect(res.body.length).toEqual(0);
+                done();
+            });
     });
 })
