@@ -52,4 +52,17 @@ describe('studentScore system', function() {
             });
     });
 
+    it('should return student 7 of class score', function(done) {
+        request(app)
+            .post('/printScore')
+            .send({stuNos: '7'})
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .expect(function(res) {
+                res.body[0].stuScore.student.name = 'tom';
+            })
+            .expect(200, {
+                name: 'tom',
+            }, done);
+    });
 })
