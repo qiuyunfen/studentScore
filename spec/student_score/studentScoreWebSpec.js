@@ -77,4 +77,17 @@ describe('studentScore system', function() {
                 done();
             });
     });
+
+    it('should return wrong message when stuNo is wrong format', function(done) {
+        request(app)
+            .post('/printScore')
+            .send({stuNos: 'yu'})
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end(function(err, res) {
+                if (err) return done(err);
+                expect(res.body.status).toEqual('0');
+                done();
+            });
+    });
 })
